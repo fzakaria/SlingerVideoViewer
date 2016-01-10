@@ -1,0 +1,5 @@
+.row.limit {
+  max-height:720px;
+  max-width:404px;
+  overflow:hidden;
+}
