@@ -1,6 +1,10 @@
+import os
 from flask import Flask, render_template
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
+application.config.from_object('config.DevelopmentConfig')
+if 'CONFIG_SETTINGS' in os.environ:
+    application.config.from_object(os.environ['CONFIG_SETTINGS'])
 
 @application.route('/sling/<video_id>')
 def video(video_id):
@@ -15,7 +19,4 @@ def ping():
 
 # run the application.
 if __name__ == "__main__":
-    # Setting debug to True enables debug output. This line should be
-    # removed before deploying a production application.
-    application.debug = False
     application.run()
