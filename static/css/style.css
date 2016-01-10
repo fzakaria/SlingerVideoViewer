@@ -3,3 +3,7 @@
   max-width:404px;
   overflow:hidden;
 }
+
+.vjs-fullscreen-control {
+	visibility:hidden;
+}

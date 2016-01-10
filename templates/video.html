@@ -31,13 +31,13 @@
       </div>
 
       <div class="row row-limit">
-        <div class="col-lg-12">
+        <div class="col-lg-4 col-sm-offset-4">
 
           <!--  
             Once thumbnails are avaialble we can set the poster to the desired thumbnail instead.
             poster="MY_VIDEO_POSTER.jpg" 
           -->
-          <video id="slinger-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto"  data-setup='{ "aspectRatio":"16:9", "playbackRates": [1, 1.5, 2] }'>
+          <video id="slinger-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto"  width="404" height="720" fullscreentoggle="off" data-setup='{ }'>
             <source id="hls" src="{{hls_url}}" type='application/x-mpegURL'>
             <source id="mp4" src="{{mp4_url}}" type='video/mp4'>
             <p class="vjs-no-js">
@@ -48,6 +48,8 @@
 
         </div>
 
+      <!-- Only show Disqus if we enable it -->
+      {% if show_disqus %}
       <div class="row">
         <div class="col-lg-12">
           <div id="disqus_thread"></div>
@@ -75,7 +77,10 @@
           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         </div>
       </div>
+      {% endif %}
+
       </div>
+
 
       <footer class="footer">
         <p>© Slinger 2016</p>

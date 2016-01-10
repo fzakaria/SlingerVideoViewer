@@ -10,7 +10,8 @@ if 'CONFIG_SETTINGS' in os.environ:
 def video(video_id):
     mp4_url = 'https://s3-us-west-2.amazonaws.com/slinger-prod2/vo/{0}'.format(video_id)
     hls_url = 'https://s3-us-west-2.amazonaws.com/slinger-prod2/v/{0}/{0}.m3u8'.format(video_id)
-    return render_template( "video.html", hls_url=hls_url, mp4_url=mp4_url)
+    show_disqus = application.config['ENABLE_DISQUS']
+    return render_template( "video.html", show_disqus=show_disqus, hls_url=hls_url, mp4_url=mp4_url)
 
 
 @application.route('/ping')
