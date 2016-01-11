@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block head %} 
+  {{ super() }}
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %} 
+  <div class="header clearfix">
+    <h3 class="text-muted">Slinger</h3>
+  </div>
+
+  <div class="row row-limit">
+	  <div class="col-lg-5 col-lg-offset-4">
+	  	{% include 'partials/video_player.html' %}
+  	  </div>
+
+	  <div class="col-lg-3">
+	  	<div class="card">
+	  	  <div class="card-block">
+            <h4 class="card-title">Embed</h4>
+	  		<p class="card-text wordwrap">
+	  			<code class="xml">
+				&lt;iframe src=&quot;{{ url_for('embed', video_id=video_id, _external=True) }}&quot;&gt;
+				 &lt;p&gt;Your browser does not support iframes.&lt;/p&gt;
+				&lt;/iframe&gt;
+				</code>
+	  		</p>
+	  	</div>
+  	  </div>
+
+  </div>
+
+  <!-- Only show Disqus if we enable it -->
+  {% if show_disqus %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="disqus_thread"></div>
+      <script>
+      /**
+      * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+      */
+      
+      var disqus_config = function () {
+      this.page.url = window.location.href; //remove transport (http/https)
+      this.page.identifier = {{video_id}}; //set video ID as the identifier
+      };
+      
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//slinger.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+  {% endif %}
+
+{% endblock %}

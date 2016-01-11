@@ -1,0 +1,12 @@
+<!-- 
+Once thumbnails are avaialble we can set the poster to the desired thumbnail instead.
+poster="MY_VIDEO_POSTER.jpg" 
+-->
+<video id="slinger-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto"  width="{{width}}" height="{{height}}" fullscreentoggle="off" data-setup='{ }'>
+  <source id="hls" src="{{hls_url}}" type='application/x-mpegURL'>
+  <source id="mp4" src="{{mp4_url}}" type='video/mp4'>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+</video>
